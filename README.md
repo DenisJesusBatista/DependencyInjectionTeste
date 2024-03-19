@@ -1,6 +1,6 @@
 ### DependencyInjectionTeste
 # Singleton 
-- Faz o new somente qyuando for solcitado e fica em memória o valor ficando inalteravel, como exemplo.
+- Serviço de injeção de dependência faz new somente quando for solcitado e fica em memória o valor, ficando inalteravel como exemplo da API.
 - Só cria novo new quando para a execução da API.
 
 
