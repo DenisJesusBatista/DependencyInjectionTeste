@@ -1,4 +1,5 @@
 using DependencyInjectionTest.API.Singleton;
+using DependencyInjectionTest.API.Transient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ISingletonService, SingletonService>();   
+builder.Services.AddSingleton<ISingletonService, SingletonService>();
+builder.Services.AddTransient<ITransientService, TransientService>();
 
 var app = builder.Build();
 

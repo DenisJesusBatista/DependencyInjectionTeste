@@ -1,4 +1,5 @@
 ﻿using DependencyInjectionTest.API.Singleton;
+using DependencyInjectionTest.API.Transient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DependencyInjectionTest.API.Controllers;
@@ -7,15 +8,20 @@ namespace DependencyInjectionTest.API.Controllers;
 public class DependencyInjectionController : ControllerBase
 {
     private readonly ISingletonService _singletonService;
-    public DependencyInjectionController(ISingletonService singletonService)
+    private readonly ITransientService _transientService;
+
+    public DependencyInjectionController(
+        ITransientService transientService,
+        ISingletonService singletonService)
     {
-        _singletonService = singletonService;        
+        _singletonService = singletonService; 
+        _transientService = transientService;
     }
 
     [HttpGet]   
     public IActionResult Get()
     {
-        var result = _singletonService.Execute();
+        var result = _transientService.Execute();
 
         return Ok(result);
     }
